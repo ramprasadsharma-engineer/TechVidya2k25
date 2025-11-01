@@ -23,3 +23,19 @@ dist-ssr
 *.sln
 *.sw?
 
+# ZIP files and archives
+*.zip
+*.rar
+*.7z
+*.tar
+*.gz
+
+# Build artifacts
+dev-dist/
+
+# Old files
+*-old.*
+index-old.html
+script-old.js
+styles-old.css
+
