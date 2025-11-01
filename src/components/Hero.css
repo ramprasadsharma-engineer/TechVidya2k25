@@ -1,0 +1,134 @@
+.hero {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  padding: 1rem;
+}
+
+.presenter-title {
+  position: absolute;
+  top: 5rem;
+  left: 0;
+  right: 0;
+  margin: auto;
+  font-size: clamp(1.2rem, 3vw, 1.75rem);
+  font-weight: 500;
+  color: var(--white);
+  z-index: 10;
+  text-align: center;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+}
+
+.presenter-title.presents {
+  top: 8rem;
+  font-size: clamp(1rem, 2.5vw, 1.5rem);
+  font-weight: 400;
+  background: linear-gradient(135deg, #E8E8E8 0%, #B8B8B8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-content {
+  text-align: center;
+  z-index: 2;
+  position: relative;
+}
+
+.event-title {
+  font-size: clamp(3rem, 10vw, 6rem);
+  font-weight: 600;
+  letter-spacing: -2px;
+  margin: 0;
+  padding: 0 1rem;
+}
+
+.liquid-mirror {
+  background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.event-subtitle {
+  font-size: clamp(1.5rem, 5vw, 2.5rem);
+  font-weight: 400;
+  color: var(--text-muted);
+  margin: 0.25rem 0 0.5rem 0;
+  letter-spacing: 1px;
+  text-align: center;
+}
+
+.event-dates {
+  font-size: clamp(1rem, 3vw, 1.5rem);
+  font-weight: 400;
+  color: var(--accent);
+  margin: 0 0 2rem 0;
+  letter-spacing: 0.5px;
+  text-align: center;
+}
+
+.hero-cta {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+}
+
+.cta-button {
+  background: linear-gradient(135deg, #E8E8E8 0%, #B8B8B8 100%);
+  color: #0a0a0a;
+  border: none;
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  box-shadow: 0 4px 20px rgba(232, 232, 232, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(232, 232, 232, 0.5);
+}
+
+.cta-button:active {
+  transform: translateY(0);
+}
+
+
+
+@media (max-width: 768px) {
+  .presenter-title {
+    top: 3rem;
+    font-size: 1rem;
+  }
+  
+  .presenter-title.presents {
+    top: 5rem;
+    font-size: 0.9rem;
+  }
+
+  .hero-cta {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .cta-button {
+    width: 100%;
+    max-width: 280px;
+    padding: 1rem 1.5rem;
+    font-size: 0.95rem;
+  }
+}
+

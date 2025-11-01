@@ -1,0 +1,611 @@
+/* ====================================================================
+CSS (Dark Theme from your Portfolio)
+ADAPTED FOR TECHVIDYA
+====================================================================
+*/
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  /* Dark Theme Colors from your Portfolio */
+  --primary: #000000;
+  --secondary: #0a0a0a;
+  --tertiary: #1a1a1a;
+  --accent: #333333;
+  --white: #ffffff;
+  --gray-light: #cccccc;
+  --gray-mid: #888888;
+  --gray-dark: #444444;
+  --border: #222222;
+  --glow: rgba(255, 255, 255, 0.1);
+  
+  /* Techvidya Colors (kept for accents if needed) */
+  --anime-sky: #87CEEB;
+  --anime-pink: #FF69B4;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+}
+
+body {
+  /* Using your portfolio's font */
+  font-family: "Space Grotesk", sans-serif;
+  background: var(--primary); /* Dark background */
+  color: var(--white); /* White text */
+  overflow-x: hidden;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-y: auto;
+}
+
+body::-webkit-scrollbar {
+  display: none; /* Safari and Chrome */
+}
+
+/* Canvas Background */
+#canvas-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  opacity: 0.8;
+}
+
+/* Hero Section */
+.hero {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  padding: 1rem;
+}
+
+.hero-content {
+  text-align: center;
+  z-index: 2;
+  opacity: 0;
+  animation: heroFadeIn 2s ease-out 0.5s forwards;
+  position: relative;
+}
+
+/* --- Top Presenter Titles (Positioned at Top) --- */
+.presenter-title {
+  position: absolute;
+  top: 5rem;
+  left: 0;
+  right: 0;
+  margin: auto;
+  font-size: clamp(1.2rem, 3vw, 1.75rem);
+  font-weight: 500;
+  color: var(--white);
+  z-index: 10;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+}
+
+.presenter-title.presents {
+  top: 8rem; /* Pushed down */
+  font-size: clamp(1rem, 2.5vw, 1.5rem);
+  font-weight: 400;
+  margin-bottom: 2.5rem; /* Adds space */
+}
+
+/* --- Main Titles --- */
+.event-title {
+  font-size: clamp(3rem, 10vw, 6.5rem);
+  font-weight: 700;
+  letter-spacing: -2px;
+  margin: 0;
+  color: var(--white);
+  /* This class is now added to the HTML for the liquid metal effect */
+}
+
+/* This is the liquid-mirror style from your portfolio */
+.liquid-mirror {
+  background: linear-gradient(
+    145deg,
+    #000000 0%,
+    #ffffff 4%,
+    #f5f5f5 6%,
+    #1e1e1e 10%,
+    #ffffff 16%,
+    #f0f0f0 20%,
+    #000000 24%,
+    #ffffff 30%,
+    #fafafa 34%,
+    #ffffff 38%,
+    #e0e0e0 42%,
+    #ffffff 46%,
+    #ffffff 50%,
+    #ffffff 54%,
+    #e0e0e0 58%,
+    #ffffff 62%,
+    #fafafa 66%,
+    #ffffff 70%,
+    #000000 76%,
+    #f0f0f0 80%,
+    #ffffff 84%,
+    #1e1e1e 90%,
+    #f5f5f5 94%,
+    #ffffff 96%,
+    #000000 100%
+  );
+  background-size: 700% 700%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: liquidMirrorShine 7s ease-in-out infinite;
+  filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.4));
+}
+
+.event-subtitle {
+  font-size: clamp(1.5rem, 5vw, 3rem);
+  font-weight: 400;
+  color: var(--gray-light); /* Lighter gray */
+  margin: 0.5rem 0 2.5rem 0;
+  letter-spacing: 1px;
+  text-shadow: none; /* Remove cartoon shadow */
+}
+
+/* Navigation */
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 2rem 0;
+  background: rgba(0, 0, 0, 0.8); /* Dark blur */
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  z-index: 1000;
+  transition: all 0.3s ease;
+  opacity: 0;
+  transform: translateY(-100%);
+}
+
+.navbar.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.nav-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--white); /* White logo */
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.logo:hover {
+  color: var(--gray-light);
+}
+
+.nav-menu {
+  display: flex;
+  gap: 3rem;
+  list-style: none;
+}
+
+.nav-link {
+  color: var(--gray-mid); /* Gray links */
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--white); /* White underline */
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: var(--white);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+}
+
+/* Sections */
+.section {
+  padding: 8rem 0;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding-left: 3rem;
+  padding-right: 3rem;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  position: relative; /* For scroll-content */
+  z-index: 10;
+}
+
+.section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.section-title {
+  font-size: clamp(3rem, 8vw, 6rem);
+  font-weight: 700;
+  margin-bottom: 4rem;
+  color: var(--white);
+  position: relative;
+  display: inline-block;
+  text-shadow: none; /* Remove cartoon shadow */
+}
+
+.section-title::before {
+  content: attr(data-title);
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: transparent;
+  -webkit-text-stroke: 1px var(--border); /* Dark stroke */
+  z-index: -1;
+  transform: translate(5px, 5px);
+}
+
+/* About Section */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr; /* Single column for fest */
+  gap: 3rem;
+  margin-top: 4rem;
+}
+
+.content-block {
+  padding: 4rem 2rem;
+  max-width: 1200px;
+  margin: 4rem auto;
+  background: var(--secondary); /* Dark background */
+  border: 1px solid var(--border); /* Dark border */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 16px;
+  color: var(--gray-light); /* Light gray text */
+}
+
+.content-block h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--white);
+  border-bottom: 2px solid var(--anime-pink); /* Keep pink accent */
+  padding-bottom: 0.5rem;
+  display: inline-block;
+  margin-bottom: 2rem;
+}
+
+.content-block p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  opacity: 0.8;
+}
+
+.placeholder-box {
+  width: 100%;
+  height: 150px;
+  background: var(--tertiary);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+.placeholder-box:not(:last-child) {
+  margin-bottom: 1rem;
+}
+
+/* Projects Section (EVENTS) */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 4rem;
+}
+
+.project-card {
+  background: var(--secondary); /* Dark card */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 16px;
+  
+  border: 1px solid var(--border);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.3); /* Dark shadow */
+
+  padding: 1.5rem;
+  height: 350px; 
+  perspective: 1000px;
+  transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.project-card:hover {
+  box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+  border-color: var(--gray-dark);
+  /* transform is handled by JS */
+}
+
+.card-content {
+  color: var(--gray-light); /* Light text */
+}
+
+.card-content h3 {
+  font-size: 1.75rem;
+  font-weight: 500;
+  color: var(--white); /* White title */
+  margin-bottom: 1rem;
+}
+
+.card-content p {
+  font-size: 1rem;
+  line-height: 1.5;
+  opacity: 0.7;
+}
+
+/* Contact Section */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6rem;
+  margin-top: 4rem;
+}
+
+.contact-info h3 {
+  font-size: 2rem;
+  font-weight: 400;
+  color: var(--white);
+  margin-bottom: 2rem;
+}
+
+.contact-info p {
+  color: var(--gray-light);
+  font-size: 1.1rem;
+  line-height: 1.7;
+  margin-bottom: 3rem;
+  opacity: 0.8;
+}
+
+.contact-details {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.contact-item {
+  color: var(--gray-mid);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.9rem;
+  transition: color 0.3s ease;
+}
+.contact-item:hover {
+  color: var(--white);
+}
+
+.contact-form {
+  background: var(--secondary);
+  border: 1px solid var(--border);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  padding: 3rem;
+}
+
+.form-group {
+  margin-bottom: 2rem;
+}
+
+.form-label {
+  display: block;
+  color: var(--gray-light);
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.5rem;
+}
+
+.form-input,
+.form-textarea {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--border);
+  color: var(--white);
+  font-size: 1rem;
+  font-family: inherit;
+  padding: 1rem 0;
+  transition: border-color 0.3s ease;
+}
+
+.form-input:focus,
+.form-textarea:focus {
+  outline: none;
+  border-bottom-color: var(--white);
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+/* Dark theme button from your portfolio */
+.form-submit {
+  background: transparent;
+  border: 1px solid var(--white);
+  color: var(--white);
+  padding: 1rem 2rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+  border-radius: 4px;
+}
+
+.form-submit::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: var(--white);
+  transition: left 0.4s ease;
+  z-index: -1;
+}
+
+.form-submit:hover::before {
+  left: 0;
+}
+
+.form-submit:hover {
+  color: var(--primary); /* Black text on hover */
+}
+
+/* Animations */
+@keyframes heroFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes liquidMirrorShine {
+  0%,
+  100% {
+    background-position: 0% 0%;
+  }
+  33% {
+    background-position: 100% 100%;
+  }
+  66% {
+    background-position: 0% 100%;
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .nav-menu {
+    display: none;
+  }
+
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .section {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  .nav-container {
+    padding: 0 2rem;
+  }
+
+  .contact-form {
+    padding: 2rem;
+  }
+  
+  .presenter-title {
+    top: 2rem;
+    font-size: 1rem;
+  }
+  .presenter-title.presents {
+    top: 4.5rem;
+    font-size: 0.9rem;
+  }
+}
+
+/* Footer */
+.footer {
+  background: var(--secondary);
+  border-top: 1px solid var(--border);
+  padding: 2rem 0 1rem;
+  margin-top: 4rem;
+}
+
+.footer-content {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 3rem;
+  text-align: center;
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.footer-link {
+  color: var(--gray-mid);
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.3s ease;
+}
+
+.footer-link:hover {
+  color: var(--white);
+}
+
+.footer-content p {
+  color: var(--gray-dark);
+  opacity: 0.7;
+  font-size: 0.8rem;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .footer-links {
+    gap: 1rem;
+  }
+  .footer-content {
+    padding: 0 2rem;
+  }
+}
+

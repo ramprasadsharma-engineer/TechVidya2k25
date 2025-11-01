@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TECHVIDYA 2K25 - TANTROTSAVA</title>
+  
+  <!-- THREE.JS SCRIPT -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  
+  <!-- YOUR STYLESHEET -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Canvas Background -->
+  <canvas id="canvas-bg"></canvas>
+
+  <!-- Navigation -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="#" class="logo">TECHVIDYA 2K25</a>
+      <ul class="nav-menu">
+        <li>
+          <a href="#about" class="nav-link" onclick="scrollToElement('about', event)">About</a>
+        </li>
+        <li>
+          <a href="#events" class="nav-link" onclick="scrollToElement('events', event)">Events</a>
+        </li>
+        <li>
+          <a href="#contact" class="nav-link" onclick="scrollToElement('contact', event)">Contact</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero" id="hero">
+    <!-- Titles positioned at the top -->
+    <h3 class="presenter-title">Sai Vidya Institute of Technology</h3>
+    <h3 class="presenter-title presents">Presents</h3>
+    
+    <div class="hero-content">
+      <!-- Added liquid-mirror class for the effect -->
+      <h1 class="event-title liquid-mirror">TECHVIDYA 2K25</h1>
+      <h2 class="event-subtitle">TANTROTSAVA</h2>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="section" id="about">
+    <div class="content-block">
+      <h2>ABOUT THE FEST</h2>
+      <p>Information about your college and the event's history.</p>
+      <div class="placeholder-box"></div>
+    </div>
+  </section>
+
+  <!-- Events Section -->
+  <section class="section" id="events">
+    <h2 class="section-title" data-title="EVENTS">EVENTS</h2>
+    <div class="projects-grid" id="events-grid">
+      <!-- Event cards will be dynamically inserted here -->
+    </div>
+  </section>
+
+  <!-- Sponsors Section -->
+  <section class="section" id="sponsors">
+    <div class="content-block">
+      <h2>SPONSORS</h2>
+      <p>Your sponsor logos and tiers will go here.</p>
+      <div class="placeholder-box"></div>
+    </div>
+  </section>
+  
+  <!-- Contact Section -->
+  <section class="section" id="contact">
+    <h2 class="section-title" data-title="CONTACT">REGISTER / CONTACT</h2>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h3>Let's create something amazing together</h3>
+        <p>
+          We're always excited to collaborate. 
+          Whether you have a question about an event, sponsorship, or just want to say hi, we'll get back to you!
+        </p>
+        <div class="contact-details">
+          <div class="contact-item">techvidya@svit.ac.in</div>
+          <div class="contact-item">Bangalore, India</div>
+        </div>
+      </div>
+      <form class="contact-form" id="contact-form">
+        <div class="form-group">
+          <label class="form-label">Name</label>
+          <input type="text" class="form-input" id="form-name" required />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Email</label>
+          <input type="email" class="form-input" id="form-email" required />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Subject</label>
+          <input type="text" class="form-input" id="form-subject" required />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Message</label>
+          <textarea class="form-textarea" id="form-message" required></textarea>
+        </div>
+        <button type="submit" class="form-submit" id="form-submit-btn">
+          <span>Send Message</span>
+        </button>
+      </form>
+    </div>
+  </section>
+  
+  <!-- Footer Section -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-links">
+        <a href="#" class="footer-link" target="_blank">Instagram</a>
+        <a href="#" class="footer-link" target="_blank">LinkedIn</a>
+        <a href="#" class="footer-link" target="_blank">X (Twitter)</a>
+      </div>
+      <p>&copy; 2025 Sai Vidya Institute of Technology</p>
+    </div>
+  </footer>
+
+  <!-- YOUR JAVASCRIPT FILE -->
+  <script src="script.js"></script>
+</body>
+</html>
+
